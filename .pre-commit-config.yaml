@@ -1,0 +1,60 @@
+repos:
+  # `pre-commit` default hooks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-added-large-files
+      - id: check-yaml
+      - id: check-toml
+
+  # Autoupdate: Python code
+  - repo: https://github.com/asottile/pyupgrade
+    rev: v3.19.0
+    hooks:
+      - id: pyupgrade
+        args: [--py312-plus]
+
+  # Check python code static typing
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.13.0
+    hooks:
+      - id: mypy
+        args: [--config, .mypy.ini]
+        files: \.py$
+        additional_dependencies:
+          [
+            "pydantic-settings",
+            "click",
+            "loguru",
+            "humanize",
+            "pandas",
+            "pytest",
+            "pylint",
+            "pytest-cov"
+          ]
+
+  # Autoformat: Python code
+  - repo: https://github.com/psf/black
+    rev: 24.10.0
+    hooks:
+      - id: black
+        args: [--target-version=py312]
+
+  # Lint: YAML
+  - repo: https://github.com/adrienverge/yamllint
+    rev: v1.35.1
+    hooks:
+      - id: yamllint
+        args: [-c, .yamllint]
+        files: \.(yaml|yml)$
+
+  # Lint: Dockerfile
+  - repo: https://github.com/hadolint/hadolint
+    rev: v2.12.0
+    hooks:
+      - id: hadolint
+        args: [-c, .hadolint.yaml]
+        entry: hadolint
+        files: ^Dockerfile

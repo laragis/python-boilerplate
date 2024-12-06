@@ -1,0 +1,83 @@
+# Hadolint configuration file for linting Dockerfiles
+#
+# Documentation: https://github.com/hadolint/hadolint
+#
+
+failure-threshold: warning
+format: tty
+ignored:
+  - DL3008
+  - DL3013
+  - SC2028
+
+override:
+  error:
+    - DL3000  # Use absolute WORKDIR
+    - DL3004  # Do not use sudo
+    - DL3011  # Valid UNIX ports range from 0 to 65535
+    - DL3012  # Multiple HEALTHCHECK instructions
+    - DL3020  # Use COPY instead of ADD for files and folders
+    - DL3021  # COPY with multiple arguments requires the last argument to end with /
+    - DL3023  # COPY --from cannot reference its own FROM alias
+    - DL3024  # FROM aliases must be unique
+    - DL3026  # Use only allowed registry in FROM image
+    - DL3043  # ONBUILD, FROM, MAINTAINER triggered within ONBUILD
+    - DL3044  # Do not refer to an ENV variable in the same statement where it is defined
+    - DL3061  # Invalid instruction order
+    - DL4000  # MAINTAINER is deprecated
+    - DL4004  # Multiple ENTRYPOINT instructions found
+
+  warning:
+    - DL3002  # Last user should not be root
+    - DL3003  # Use WORKDIR to switch to a directory
+    - DL3006  # Always tag the version of an image explicitly
+    - DL3007  # Using latest is prone to errors
+    - DL3008  # Pin versions in apt-get install
+    - DL3013  # Pin versions in pip
+    - DL3014  # Use the -y switch
+    - DL3016  # Pin versions in npm
+    - DL3018  # Pin versions in apk add
+    - DL3022  # COPY --from should reference a previously defined FROM alias
+    - DL3025  # Use JSON notation for CMD and ENTRYPOINT
+    - DL3027  # Use apt-get instead of apt
+    - DL3028  # Pin versions in gem install
+    - DL3029  # Do not use --platform flag with FROM
+    - DL3030  # Use -y switch in yum
+    - DL3032  # Clean yum cache
+    - DL3033  # Specify version in yum
+    - DL3034  # Use -y switch in zypper
+    - DL3035  # Do not use zypper dist-upgrade
+    - DL3036  # Clean zypper cache
+    - DL3037  # Specify version in zypper
+    - DL3038  # Use -y switch in dnf
+    - DL3040  # Clean dnf cache
+    - DL3041  # Specify version in dnf
+    - DL3042  # Avoid cache directory with pip install --no-cache-dir
+    - DL3045  # COPY to a relative destination without WORKDIR set
+    - DL3046  # useradd without -l and high UID results in large image
+    - DL3051  # Label is empty
+    - DL3052  # Label is not a valid URL
+    - DL3053  # Label is not a valid time format
+    - DL3054  # Label is not a valid SPDX license
+    - DL3055  # Label is not a valid git hash
+    - DL3056  # Label does not conform to semantic versioning
+    - DL3058  # Label is not a valid email format - must conform to RFC5322.
+    - DL4001  # Use either Wget or Curl, not both
+    - DL4003  # Multiple CMD instructions found
+    - DL4005  # Use SHELL to change the default shell
+    - DL4006  # Set SHELL option -o pipefail for RUN with pipes
+
+  info:
+    - DL3001  # For some bash commands it makes no sense running them in a Docker container.
+    - DL3009  # Delete apt-get lists after installing something
+    - DL3010  # Use ADD for extracting archives
+    - DL3015  # Avoid additional packages by specifying --no-install-recommends
+    - DL3019  # Use --no-cache in apk commands
+    - DL3047  # Wget without --progress causes bloated logs
+    - DL3049  # Label is missing
+    - DL3050  # Superfluous labels present
+    - DL3059  # Consolidate consecutive RUN instructions
+    - DL3060  # Clean yarn cache after install
+
+  style:
+    - DL3048  # Invalid label key
