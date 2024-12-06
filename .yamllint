@@ -1,0 +1,29 @@
+# This is a yamllint configuration file
+#
+# Documentation: https://yamllint.readthedocs.io/en/stable/
+# Project: https://github.com/adrienverge/yamllint
+#
+
+extends: relaxed
+
+rules:
+  indentation:  # Control the indentation.
+    spaces: 2
+  line-length:  # Set a limit to lines length.
+    max: 100
+    level: warning
+  new-lines:    # Force the type of new line characters.
+    type: unix
+  empty-lines:  # Set a maximal number of allowed consecutive blank lines.
+    max: 2
+  colons: {     # Control the number of spaces before and after colons (:).
+    max-spaces-before: 0,
+    max-spaces-after: 1
+  }
+  comments:     # Control the position and formatting of comments.
+    require-starting-space: true
+    ignore-shebangs: true
+    min-spaces-from-content: 2
+  trailing-spaces: disable
+  document-start: disable
+  document-end: disable

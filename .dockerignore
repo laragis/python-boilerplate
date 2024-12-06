@@ -1,0 +1,23 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+__pycache__/
+*.py[cod]
+*$py.class
+.mypy_cache
+
+# Docker
+docker-compose.yml
+docker-compose.*.yml
+Dockerfile
+.dockerignore
+
+# Github
+.git
+.gitignore
+
+# Orthe files
+README.md
+*.log
+*.csv
+*.tmp
+*.txt
